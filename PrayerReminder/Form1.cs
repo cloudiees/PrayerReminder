@@ -1,16 +1,7 @@
-﻿using KGySoft.Drawing;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Channels;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PrayerReminder
@@ -34,7 +25,7 @@ namespace PrayerReminder
         public Pair<string, DateTime>[] prayers = new Pair<string, DateTime>[6];
         public PrayerData<Control, Control, Control, FancyPanel>[] prayerObjects = new PrayerData<Control, Control, Control, FancyPanel>[5];
         public int currPrayer = -2;
-        
+
         // Pretty rectangle (idk I stole this from stack overflow)
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -65,7 +56,7 @@ namespace PrayerReminder
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-   
+
         }
         // Loads in prayer timings
         public async void loadTimings()
@@ -76,11 +67,12 @@ namespace PrayerReminder
 
             prayers[1].First = "Sunrise";
             prayers[1].Second = timingInfo.Sunrise;
-            Trace.WriteLine(timingInfo.Sunrise.Hour);
-            Trace.WriteLine(prayers[1].Second);
+            //Trace.WriteLine(timingInfo.Sunrise.Hour);
+            //Trace.WriteLine(prayers[1].Second);
 
             prayers[2].First = "Dhuhr";
             prayers[2].Second = timingInfo.Dhuhr;
+
 
             prayers[3].First = "Asr";
             prayers[3].Second = timingInfo.Asr;
@@ -90,6 +82,7 @@ namespace PrayerReminder
 
             prayers[5].First = "Isha";
             prayers[5].Second = timingInfo.Isha;
+
 
             fajrTime.Text = timingInfo.Fajr.ToShortTimeString();
             dhuhrTime.Text = timingInfo.Dhuhr.ToShortTimeString();
@@ -197,10 +190,10 @@ namespace PrayerReminder
             {
                 currPrayer = -1;
             }
-            Trace.WriteLine(currPrayer + " " + lastPrayer);
+            //Trace.WriteLine(currPrayer + " " + lastPrayer);
             if (currPrayer != lastPrayer)
             {
-                Trace.WriteLine(currPrayer);
+                //Trace.WriteLine(currPrayer);
                 deselectAndSelectPrayer();
             }
         }

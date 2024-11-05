@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PrayerReminder
 {
-    public class FancyPanel:Panel
+    public class FancyPanel : Panel
     {
         // Fields
         private int borderRadius = 30;
@@ -26,13 +21,15 @@ namespace PrayerReminder
         }
 
         // Properties
-        public int BorderRadius { 
-            get => borderRadius; 
-            set { borderRadius = value; this.Invalidate(); } 
+        public int BorderRadius
+        {
+            get => borderRadius;
+            set { borderRadius = value; this.Invalidate(); }
         }
-        public float GradientAngle { 
+        public float GradientAngle
+        {
             get => gradientAngle;
-            set { gradientAngle = value; this.Invalidate(); } 
+            set { gradientAngle = value; this.Invalidate(); }
         }
         public Color GradientTopColor
         {
@@ -70,7 +67,7 @@ namespace PrayerReminder
             graphics.FillRectangle(brush, ClientRectangle);
 
             // BorderRadius
-            RectangleF rectangleF = new RectangleF(0,0,this.Width,this.Height);
+            RectangleF rectangleF = new RectangleF(0, 0, this.Width, this.Height);
             if (borderRadius > 2)
             {
                 using (GraphicsPath graphicsPath = GetFancyPath(rectangleF, borderRadius))
