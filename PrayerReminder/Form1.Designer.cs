@@ -55,11 +55,7 @@ namespace PrayerReminder
             this.fajrTime = new System.Windows.Forms.Label();
             this.fajrLabel = new System.Windows.Forms.Label();
             this.fajrCheck = new System.Windows.Forms.CheckBox();
-            this.fajrPanel = new PrayerReminder.FancyPanel();
-            this.dhuhrPanel = new PrayerReminder.FancyPanel();
-            this.asrPanel = new PrayerReminder.FancyPanel();
-            this.maghribPanel = new PrayerReminder.FancyPanel();
-            this.ishaPanel = new PrayerReminder.FancyPanel();
+            this.selectedPanel = new PrayerReminder.FancyPanel();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -273,7 +269,7 @@ namespace PrayerReminder
             this.fajrLabel.BackColor = System.Drawing.Color.Transparent;
             this.fajrLabel.Font = new System.Drawing.Font("Aqua Grotesque", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fajrLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.fajrLabel.Location = new System.Drawing.Point(40, 65);
+            this.fajrLabel.Location = new System.Drawing.Point(40, 63);
             this.fajrLabel.Name = "fajrLabel";
             this.fajrLabel.Size = new System.Drawing.Size(32, 16);
             this.fajrLabel.TabIndex = 6;
@@ -289,81 +285,25 @@ namespace PrayerReminder
             this.fajrCheck.TabIndex = 16;
             this.fajrCheck.UseVisualStyleBackColor = false;
             // 
-            // fajrPanel
+            // selectedPanel
             // 
-            this.fajrPanel.BackColor = System.Drawing.Color.White;
-            this.fajrPanel.BorderRadius = 20;
-            this.fajrPanel.ForeColor = System.Drawing.Color.Black;
-            this.fajrPanel.GradientAngle = 90F;
-            this.fajrPanel.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(122)))), ((int)(((byte)(252)))));
-            this.fajrPanel.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(122)))), ((int)(((byte)(252)))));
-            this.fajrPanel.Location = new System.Drawing.Point(11, 55);
-            this.fajrPanel.Name = "fajrPanel";
-            this.fajrPanel.Size = new System.Drawing.Size(152, 30);
-            this.fajrPanel.TabIndex = 23;
-            this.fajrPanel.Visible = false;
-            // 
-            // dhuhrPanel
-            // 
-            this.dhuhrPanel.BackColor = System.Drawing.Color.White;
-            this.dhuhrPanel.BorderRadius = 20;
-            this.dhuhrPanel.ForeColor = System.Drawing.Color.Black;
-            this.dhuhrPanel.GradientAngle = 90F;
-            this.dhuhrPanel.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.dhuhrPanel.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.dhuhrPanel.Location = new System.Drawing.Point(11, 100);
-            this.dhuhrPanel.Name = "dhuhrPanel";
-            this.dhuhrPanel.Size = new System.Drawing.Size(152, 30);
-            this.dhuhrPanel.TabIndex = 24;
-            this.dhuhrPanel.Visible = false;
-            // 
-            // asrPanel
-            // 
-            this.asrPanel.BackColor = System.Drawing.Color.White;
-            this.asrPanel.BorderRadius = 20;
-            this.asrPanel.ForeColor = System.Drawing.Color.Black;
-            this.asrPanel.GradientAngle = 90F;
-            this.asrPanel.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.asrPanel.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.asrPanel.Location = new System.Drawing.Point(11, 145);
-            this.asrPanel.Name = "asrPanel";
-            this.asrPanel.Size = new System.Drawing.Size(152, 30);
-            this.asrPanel.TabIndex = 25;
-            this.asrPanel.Visible = false;
-            // 
-            // maghribPanel
-            // 
-            this.maghribPanel.BackColor = System.Drawing.Color.White;
-            this.maghribPanel.BorderRadius = 20;
-            this.maghribPanel.ForeColor = System.Drawing.Color.Black;
-            this.maghribPanel.GradientAngle = 90F;
-            this.maghribPanel.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.maghribPanel.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.maghribPanel.Location = new System.Drawing.Point(11, 190);
-            this.maghribPanel.Name = "maghribPanel";
-            this.maghribPanel.Size = new System.Drawing.Size(152, 30);
-            this.maghribPanel.TabIndex = 26;
-            this.maghribPanel.Visible = false;
-            // 
-            // ishaPanel
-            // 
-            this.ishaPanel.BackColor = System.Drawing.Color.White;
-            this.ishaPanel.BorderRadius = 20;
-            this.ishaPanel.ForeColor = System.Drawing.Color.Black;
-            this.ishaPanel.GradientAngle = 90F;
-            this.ishaPanel.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.ishaPanel.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.ishaPanel.Location = new System.Drawing.Point(11, 235);
-            this.ishaPanel.Name = "ishaPanel";
-            this.ishaPanel.Size = new System.Drawing.Size(152, 30);
-            this.ishaPanel.TabIndex = 27;
-            this.ishaPanel.Visible = false;
+            this.selectedPanel.BackColor = System.Drawing.Color.White;
+            this.selectedPanel.BorderRadius = 20;
+            this.selectedPanel.ForeColor = System.Drawing.Color.Black;
+            this.selectedPanel.GradientAngle = 90F;
+            this.selectedPanel.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.selectedPanel.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.selectedPanel.Location = new System.Drawing.Point(11, 235);
+            this.selectedPanel.Name = "selectedPanel";
+            this.selectedPanel.Size = new System.Drawing.Size(152, 30);
+            this.selectedPanel.TabIndex = 27;
+            this.selectedPanel.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(20)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(174, 281);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.fajrCheck);
@@ -383,11 +323,8 @@ namespace PrayerReminder
             this.Controls.Add(this.maghribLabel);
             this.Controls.Add(this.asrLabel);
             this.Controls.Add(this.dhuhrLabel);
-            this.Controls.Add(this.fajrPanel);
-            this.Controls.Add(this.dhuhrPanel);
-            this.Controls.Add(this.asrPanel);
-            this.Controls.Add(this.maghribPanel);
-            this.Controls.Add(this.ishaPanel);
+            this.Controls.Add(this.selectedPanel);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -424,11 +361,7 @@ namespace PrayerReminder
         private Label fajrTime;
         private Label fajrLabel;
         private CheckBox fajrCheck;
-        private FancyPanel fajrPanel;
-        private FancyPanel dhuhrPanel;
-        private FancyPanel asrPanel;
-        private FancyPanel maghribPanel;
-        private FancyPanel ishaPanel;
+        private FancyPanel selectedPanel;
     }
 }
 
