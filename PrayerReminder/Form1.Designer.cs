@@ -293,9 +293,9 @@ namespace PrayerReminder
             this.selectedPanel.GradientAngle = 90F;
             this.selectedPanel.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
             this.selectedPanel.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.selectedPanel.Location = new System.Drawing.Point(11, 235);
+            this.selectedPanel.Location = new System.Drawing.Point(10, 235);
             this.selectedPanel.Name = "selectedPanel";
-            this.selectedPanel.Size = new System.Drawing.Size(152, 30);
+            this.selectedPanel.Size = new System.Drawing.Size(175, 30);
             this.selectedPanel.TabIndex = 27;
             this.selectedPanel.Visible = false;
             // 
@@ -303,8 +303,8 @@ namespace PrayerReminder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(174, 281);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(194, 281);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.fajrCheck);
             this.Controls.Add(this.fajrLabel);

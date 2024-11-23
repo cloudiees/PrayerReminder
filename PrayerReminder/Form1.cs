@@ -24,11 +24,9 @@ namespace PrayerReminder
         - Setup reminder and maybe some things in settings for the reminder
         - Allow user to input location (or automatically get it) and calculation method (or school) for API request
         - Do the actual reminder part
-        - Add a selection square for the current prayer
         - Add an initial setup phase thing
         - Make it look less ugly
         - Make it so whenever something that is not the main form background is clicked it is able to move when it's supposed to
-        - Figure out calculations for panel movement
         */
         public Point mouseLocation;
         public Pair<string, DateTime>[] prayers = new Pair<string, DateTime>[6];
@@ -143,7 +141,7 @@ namespace PrayerReminder
             time.Parent = selectedPanel;
             check.Location = new Point(10, 10);
             name.Location = new Point(30, 10);
-            time.Location = new Point(70, 10);
+            time.Location = new Point(95, 10);
 
         }
         // Deselect current prayer and selects the new one
@@ -160,7 +158,7 @@ namespace PrayerReminder
             if (!(currPrayer < 0) && currPrayer != 1)
             {
                 if (x > 0) x -= 1;
-                Point newLoc = new Point(10, 30 * x + 100);
+                Point newLoc = new Point(10, (45 * x) + 55);
                 selectPrayer(prayerObjects[x].checkBox, prayerObjects[x].label, prayerObjects[x].timing, newLoc);
             }
             if (currPrayer == -1)
@@ -205,7 +203,7 @@ namespace PrayerReminder
                 deselectAndSelectPrayer();
             }
         }
-        // Prayer reminder checker
+        // Periodically checks if it's a new prayer time
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (DateTime.Now.Hour == 0)
