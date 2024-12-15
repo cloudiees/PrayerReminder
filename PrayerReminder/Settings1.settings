@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PrayerReminder.Properties" GeneratedClassName="Settings1">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PrayerReminder" GeneratedClassName="Settings1">
   <Profiles />
   <Settings>
     <Setting Name="alwaysOntopS" Type="System.Boolean" Scope="User">
@@ -9,7 +9,7 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="positionS" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">100, 100</Value>
+      <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="lockPosS" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
