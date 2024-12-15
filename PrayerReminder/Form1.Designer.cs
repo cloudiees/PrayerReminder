@@ -63,6 +63,9 @@ namespace PrayerReminder
             this.fajrLabel = new System.Windows.Forms.Label();
             this.fajrCheck = new System.Windows.Forms.CheckBox();
             this.selectedPanel = new PrayerReminder.FancyPanel();
+            this.schoolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shafiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hanafiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,26 +76,26 @@ namespace PrayerReminder
             this.lockPositionToolStripMenuItem,
             this.alwaysOnTopToolStripMenuItem,
             this.opacityToolStripMenuItem,
+            this.schoolToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 136);
             // 
             // lockPositionToolStripMenuItem
             // 
             this.lockPositionToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.lockPositionToolStripMenuItem.CheckOnClick = true;
             this.lockPositionToolStripMenuItem.Name = "lockPositionToolStripMenuItem";
-            this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lockPositionToolStripMenuItem.Text = "Lock Position";
             this.lockPositionToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.lockPositionToolStripMenuItem_CheckStateChanged);
-
             // 
             // alwaysOnTopToolStripMenuItem
             // 
             this.alwaysOnTopToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.alwaysOnTopToolStripMenuItem.CheckOnClick = true;
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
-            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.alwaysOnTopToolStripMenuItem.Text = "Always On Top";
             this.alwaysOnTopToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_CheckStateChanged);
             // 
@@ -106,14 +109,14 @@ namespace PrayerReminder
             this.opacity25,
             this.opacity10});
             this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
-            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.opacityToolStripMenuItem.Text = "Opacity";
             // 
             // opacity100
             // 
             this.opacity100.Name = "opacity100";
             this.opacity100.Size = new System.Drawing.Size(102, 22);
-            this.opacity100.Tag = 1.0;
+            this.opacity100.Tag = 1D;
             this.opacity100.Text = "100%";
             this.opacity100.Click += new System.EventHandler(this.Opacity_Clicked);
             // 
@@ -161,7 +164,7 @@ namespace PrayerReminder
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -424,6 +427,31 @@ namespace PrayerReminder
             this.selectedPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
             this.selectedPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
+            // schoolToolStripMenuItem
+            // 
+            this.schoolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.shafiToolStripMenuItem,
+            this.hanafiToolStripMenuItem});
+            this.schoolToolStripMenuItem.Name = "schoolToolStripMenuItem";
+            this.schoolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.schoolToolStripMenuItem.Text = "School";
+            // 
+            // shafiToolStripMenuItem
+            // 
+            this.shafiToolStripMenuItem.Name = "shafiToolStripMenuItem";
+            this.shafiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shafiToolStripMenuItem.Text = "Shafi";
+            this.shafiToolStripMenuItem.Tag = 0;
+            this.shafiToolStripMenuItem.Click += new System.EventHandler(this.School_Clicked);
+            // 
+            // hanafiToolStripMenuItem
+            // 
+            this.hanafiToolStripMenuItem.Name = "hanafiToolStripMenuItem";
+            this.hanafiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hanafiToolStripMenuItem.Text = "Hanafi";
+            this.hanafiToolStripMenuItem.Tag = 1;
+            this.hanafiToolStripMenuItem.Click += new System.EventHandler(this.School_Clicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +523,9 @@ namespace PrayerReminder
         private ToolStripMenuItem opacity50;
         private ToolStripMenuItem opacity25;
         private ToolStripMenuItem opacity10;
+        private ToolStripMenuItem schoolToolStripMenuItem;
+        private ToolStripMenuItem shafiToolStripMenuItem;
+        private ToolStripMenuItem hanafiToolStripMenuItem;
     }
 }
 

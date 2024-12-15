@@ -98,6 +98,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LocationModel.cs" />
+    <Compile Include="LocationService.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="PrayerData.cs" />
     <Compile Include="Program.cs" />

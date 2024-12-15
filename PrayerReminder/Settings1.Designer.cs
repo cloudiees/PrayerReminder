@@ -70,5 +70,17 @@ namespace PrayerReminder {
                 this["lockPosS"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int schoolS {
+            get {
+                return ((int)(this["schoolS"]));
+            }
+            set {
+                this["schoolS"] = value;
+            }
+        }
     }
 }

@@ -81,11 +81,20 @@ namespace PrayerReminder
                 this.TopMost = true;
             }
             this.Location = Settings1.Default.positionS;
+            if (Settings1.Default.schoolS == 0)
+            {
+                shafiToolStripMenuItem.Checked = true;
+            }
+            else if (Settings1.Default.schoolS == 1)
+            {
+                hanafiToolStripMenuItem.Checked = true;
+            }
         }
         // Loads in prayer timings
         public async void loadTimings()
         {
-            var timingInfo = await TimingProcessor.LoadTimings();
+            var locationInfo = await LocationService.ApproxLocation();
+            var timingInfo = await TimingProcessor.LoadTimings(locationInfo.city, locationInfo.countryCode, Settings1.Default.schoolS);
             prayers[0].First = "Fajr";
             prayers[0].Second = timingInfo.Fajr;
             prayers[1].First = "Sunrise";
@@ -255,6 +264,21 @@ namespace PrayerReminder
             this.Opacity = currOpacity;
             Settings1.Default.opacityS = currOpacity;
             Settings1.Default.Save();
+        }
+        private void School_Clicked(object sender, EventArgs e)
+        {
+            if (Settings1.Default.schoolS == 0)
+            {
+                shafiToolStripMenuItem.Checked = false;
+            }
+            else if (Settings1.Default.schoolS == 1)
+            {
+                hanafiToolStripMenuItem.Checked = false;
+            }
+            Settings1.Default.schoolS = (int)(sender as ToolStripMenuItem).Tag;
+            (sender as ToolStripMenuItem).Checked = true;
+            Settings1.Default.Save();
+            loadTimings();
         }
     }
 }
