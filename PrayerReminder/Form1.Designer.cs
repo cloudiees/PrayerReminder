@@ -84,6 +84,8 @@ namespace PrayerReminder
             this.lockPositionToolStripMenuItem.Name = "lockPositionToolStripMenuItem";
             this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.lockPositionToolStripMenuItem.Text = "Lock Position";
+            this.lockPositionToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.lockPositionToolStripMenuItem_CheckStateChanged);
+
             // 
             // alwaysOnTopToolStripMenuItem
             // 
@@ -111,7 +113,7 @@ namespace PrayerReminder
             // 
             this.opacity100.Name = "opacity100";
             this.opacity100.Size = new System.Drawing.Size(102, 22);
-            this.opacity100.Tag = 1;
+            this.opacity100.Tag = 1.0;
             this.opacity100.Text = "100%";
             this.opacity100.Click += new System.EventHandler(this.Opacity_Clicked);
             // 

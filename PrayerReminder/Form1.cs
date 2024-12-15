@@ -19,13 +19,13 @@ namespace PrayerReminder
     {
         /*
         TODO:
-        - Make a settings thing so preferences such as always on top, lock position, and opacity are saved from session to session
         - Setup reminder and maybe some things in settings for the reminder
         - Allow user to input location (or automatically get it) and calculation method (or school) for API request
         - Do the actual reminder part
         - Add an initial setup phase thing
         - Make it look less ugly
         */
+        private Dictionary<double, System.Windows.Forms.ToolStripMenuItem> opacityDict = new Dictionary<double, System.Windows.Forms.ToolStripMenuItem>();
         private double currOpacity;
         private ToolStripMenuItem currOpacityObj;
         private Point mouseLocation;
@@ -64,10 +64,23 @@ namespace PrayerReminder
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            currOpacity = 1;
+            opacityDict.Add(1.0, opacity100);
+            opacityDict.Add(.9, opacity90);
+            opacityDict.Add(.75, opacity75);
+            opacityDict.Add(.5, opacity50);
+            opacityDict.Add(.25, opacity25);
+            opacityDict.Add(.1, opacity10);
+            currOpacity = Settings1.Default.opacityS;
             this.Opacity = currOpacity;
-            currOpacityObj = this.opacity100;
+            currOpacityObj = opacityDict[currOpacity];
             currOpacityObj.Checked = true;
+            lockPositionToolStripMenuItem.Checked = Settings1.Default.lockPosS;
+            alwaysOnTopToolStripMenuItem.Checked = Settings1.Default.alwaysOntopS;
+            if (alwaysOnTopToolStripMenuItem.Checked == true)
+            {
+                this.TopMost = true;
+            }
+            this.Location = Settings1.Default.positionS;
         }
         // Loads in prayer timings
         public async void loadTimings()
@@ -100,7 +113,7 @@ namespace PrayerReminder
         }
         private void mouse_Move(object sender, MouseEventArgs e)
         {
-            if (mouseDown)
+            if (mouseDown && lockPositionToolStripMenuItem.Checked == false)
             {
                 this.Location = new Point(
                     (this.Location.X - mouseLocation.X) + e.X, (this.Location.Y - mouseLocation.Y) + e.Y);
@@ -110,18 +123,28 @@ namespace PrayerReminder
         }
         private void mouse_Up(object sender, MouseEventArgs e)
         {
+            Settings1.Default.positionS = this.Location;
+            Settings1.Default.Save();
             mouseDown = false;
         }
 
         // Handles closing out the application via the right click menu
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Settings1.Default.Save();
             this.Close();
         }
         // Handles always on top toggle via right click menu (switch to seperate menu section to save selection)
         private void alwaysOnTopToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             this.TopMost = alwaysOnTopToolStripMenuItem.Checked;
+            Settings1.Default.alwaysOntopS = alwaysOnTopToolStripMenuItem.Checked;
+            Settings1.Default.Save();
+        }
+        private void lockPositionToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            Settings1.Default.lockPosS = lockPositionToolStripMenuItem.Checked;
+            Settings1.Default.Save();
         }
         // Live clock
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -230,6 +253,8 @@ namespace PrayerReminder
             currOpacityObj.Checked = true;
             currOpacity = (double)currOpacityObj.Tag;
             this.Opacity = currOpacity;
+            Settings1.Default.opacityS = currOpacity;
+            Settings1.Default.Save();
         }
     }
 }
