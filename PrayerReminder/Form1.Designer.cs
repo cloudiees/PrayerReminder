@@ -56,6 +56,13 @@ namespace PrayerReminder
             this.fajrLabel = new System.Windows.Forms.Label();
             this.fajrCheck = new System.Windows.Forms.CheckBox();
             this.selectedPanel = new PrayerReminder.FancyPanel();
+            this.opacityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity100 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity90 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity75 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity50 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity25 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity10 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,16 +72,17 @@ namespace PrayerReminder
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lockPositionToolStripMenuItem,
             this.alwaysOnTopToolStripMenuItem,
+            this.opacityToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // lockPositionToolStripMenuItem
             // 
             this.lockPositionToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.lockPositionToolStripMenuItem.CheckOnClick = true;
             this.lockPositionToolStripMenuItem.Name = "lockPositionToolStripMenuItem";
-            this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lockPositionToolStripMenuItem.Text = "Lock Position";
             // 
             // alwaysOnTopToolStripMenuItem
@@ -82,7 +90,7 @@ namespace PrayerReminder
             this.alwaysOnTopToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.alwaysOnTopToolStripMenuItem.CheckOnClick = true;
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
-            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.alwaysOnTopToolStripMenuItem.Text = "Always On Top";
             this.alwaysOnTopToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_CheckStateChanged);
             // 
@@ -90,7 +98,7 @@ namespace PrayerReminder
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -299,6 +307,67 @@ namespace PrayerReminder
             this.selectedPanel.TabIndex = 27;
             this.selectedPanel.Visible = false;
             // 
+            // opacityToolStripMenuItem
+            // 
+            this.opacityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opacity100,
+            this.opacity90,
+            this.opacity75,
+            this.opacity50,
+            this.opacity25,
+            this.opacity10});
+            this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
+            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.opacityToolStripMenuItem.Text = "Opacity";
+            // 
+            // opacity100
+            // 
+            this.opacity100.Name = "opacity100";
+            this.opacity100.Size = new System.Drawing.Size(180, 22);
+            this.opacity100.Text = "100%";
+            this.opacity100.Tag = 1;
+            this.opacity100.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity10
+            // 
+            this.opacity10.Name = "opacity10";
+            this.opacity10.Size = new System.Drawing.Size(180, 22);
+            this.opacity10.Text = "10%";
+            this.opacity10.Tag = .1;
+            this.opacity10.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity50
+            // 
+            this.opacity50.Name = "opacity50";
+            this.opacity50.Size = new System.Drawing.Size(180, 22);
+            this.opacity50.Text = "50%";
+            this.opacity50.Tag = .5;
+            this.opacity50.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity25
+            // 
+            this.opacity25.Name = "opacity25";
+            this.opacity25.Size = new System.Drawing.Size(180, 22);
+            this.opacity25.Text = "25%";
+            this.opacity25.Tag = .25;
+            this.opacity25.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity90
+            // 
+            this.opacity90.Name = "opacity90";
+            this.opacity90.Size = new System.Drawing.Size(180, 22);
+            this.opacity90.Text = "90%";
+            this.opacity90.Tag = .9;
+            this.opacity90.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity75
+            // 
+            this.opacity75.Name = "opacity75";
+            this.opacity75.Size = new System.Drawing.Size(180, 22);
+            this.opacity75.Text = "75%";
+            this.opacity75.Tag = .75;
+            this.opacity75.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,6 +431,13 @@ namespace PrayerReminder
         private Label fajrLabel;
         private CheckBox fajrCheck;
         private FancyPanel selectedPanel;
+        private ToolStripMenuItem opacityToolStripMenuItem;
+        private ToolStripMenuItem opacity100;
+        private ToolStripMenuItem opacity90;
+        private ToolStripMenuItem opacity75;
+        private ToolStripMenuItem opacity50;
+        private ToolStripMenuItem opacity25;
+        private ToolStripMenuItem opacity10;
     }
 }
 

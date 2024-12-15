@@ -19,7 +19,6 @@ namespace PrayerReminder
     {
         /*
         TODO:
-        - Make an opacity slider/value inputter thingy
         - Make a settings thing so preferences such as always on top, lock position, and opacity are saved from session to session
         - Setup reminder and maybe some things in settings for the reminder
         - Allow user to input location (or automatically get it) and calculation method (or school) for API request
@@ -28,6 +27,8 @@ namespace PrayerReminder
         - Make it look less ugly
         - Make it so whenever something that is not the main form background is clicked it is able to move when it's supposed to
         */
+        public double currOpacity;
+        public ToolStripMenuItem currOpacityObj;
         public Point mouseLocation;
         public Pair<string, DateTime>[] prayers = new Pair<string, DateTime>[6];
         public int currPrayer = -2;
@@ -63,7 +64,10 @@ namespace PrayerReminder
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            currOpacity = 1;
+            this.Opacity = currOpacity;
+            currOpacityObj = this.opacity100;
+            currOpacityObj.Checked = true;
         }
         // Loads in prayer timings
         public async void loadTimings()
@@ -211,6 +215,14 @@ namespace PrayerReminder
                 loadTimings();
             }
             initPrayers();
+        }
+        private void Opacity_Clicked(object sender, EventArgs e)
+        {
+            currOpacityObj.Checked = false;
+            currOpacityObj = (ToolStripMenuItem)sender;
+            currOpacityObj.Checked = true;
+            currOpacity = (double)currOpacityObj.Tag;
+            this.Opacity = currOpacity;
         }
     }
 }
