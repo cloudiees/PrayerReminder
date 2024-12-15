@@ -25,14 +25,14 @@ namespace PrayerReminder
         - Do the actual reminder part
         - Add an initial setup phase thing
         - Make it look less ugly
-        - Make it so whenever something that is not the main form background is clicked it is able to move when it's supposed to
         */
-        public double currOpacity;
-        public ToolStripMenuItem currOpacityObj;
-        public Point mouseLocation;
-        public Pair<string, DateTime>[] prayers = new Pair<string, DateTime>[6];
-        public int currPrayer = -2;
-        public PrayerData<Control, Control, Control>[] prayerObjects = new PrayerData<Control, Control, Control>[5];
+        private double currOpacity;
+        private ToolStripMenuItem currOpacityObj;
+        private Point mouseLocation;
+        private bool mouseDown;
+        private Pair<string, DateTime>[] prayers = new Pair<string, DateTime>[6];
+        private int currPrayer = -2;
+        private PrayerData<Control, Control, Control>[] prayerObjects = new PrayerData<Control, Control, Control>[5];
 
         // Pretty rectangle (idk I stole this from stack overflow)
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -92,21 +92,27 @@ namespace PrayerReminder
             ishaTime.Text = timingInfo.Isha.ToShortTimeString();
             initPrayers();
         }
-        // Gets mouse location to use for moving the window
+        // Handling moving the window
         private void mouse_Down(object sender, MouseEventArgs e)
         {
-            mouseLocation = new Point(-e.X, -e.Y);
+            mouseDown = true;
+            mouseLocation = e.Location;
         }
-        // Moving the window
         private void mouse_Move(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && !lockPositionToolStripMenuItem.Checked)
+            if (mouseDown)
             {
-                Point mousePose = Control.MousePosition;
-                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
-                Location = mousePose;
+                this.Location = new Point(
+                    (this.Location.X - mouseLocation.X) + e.X, (this.Location.Y - mouseLocation.Y) + e.Y);
+
+                this.Update();
             }
         }
+        private void mouse_Up(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
         // Handles closing out the application via the right click menu
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -216,6 +222,7 @@ namespace PrayerReminder
             }
             initPrayers();
         }
+        // Handler for changing opacity via tool strip menu
         private void Opacity_Clicked(object sender, EventArgs e)
         {
             currOpacityObj.Checked = false;

@@ -35,6 +35,13 @@ namespace PrayerReminder
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lockPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity100 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity90 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity75 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity50 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity25 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacity10 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dhuhrLabel = new System.Windows.Forms.Label();
             this.asrLabel = new System.Windows.Forms.Label();
@@ -56,13 +63,6 @@ namespace PrayerReminder
             this.fajrLabel = new System.Windows.Forms.Label();
             this.fajrCheck = new System.Windows.Forms.CheckBox();
             this.selectedPanel = new PrayerReminder.FancyPanel();
-            this.opacityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.opacity100 = new System.Windows.Forms.ToolStripMenuItem();
-            this.opacity90 = new System.Windows.Forms.ToolStripMenuItem();
-            this.opacity75 = new System.Windows.Forms.ToolStripMenuItem();
-            this.opacity50 = new System.Windows.Forms.ToolStripMenuItem();
-            this.opacity25 = new System.Windows.Forms.ToolStripMenuItem();
-            this.opacity10 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,14 +75,14 @@ namespace PrayerReminder
             this.opacityToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
             // 
             // lockPositionToolStripMenuItem
             // 
             this.lockPositionToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.lockPositionToolStripMenuItem.CheckOnClick = true;
             this.lockPositionToolStripMenuItem.Name = "lockPositionToolStripMenuItem";
-            this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.lockPositionToolStripMenuItem.Text = "Lock Position";
             // 
             // alwaysOnTopToolStripMenuItem
@@ -90,15 +90,76 @@ namespace PrayerReminder
             this.alwaysOnTopToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.alwaysOnTopToolStripMenuItem.CheckOnClick = true;
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
-            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.alwaysOnTopToolStripMenuItem.Text = "Always On Top";
             this.alwaysOnTopToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_CheckStateChanged);
+            // 
+            // opacityToolStripMenuItem
+            // 
+            this.opacityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opacity100,
+            this.opacity90,
+            this.opacity75,
+            this.opacity50,
+            this.opacity25,
+            this.opacity10});
+            this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
+            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.opacityToolStripMenuItem.Text = "Opacity";
+            // 
+            // opacity100
+            // 
+            this.opacity100.Name = "opacity100";
+            this.opacity100.Size = new System.Drawing.Size(102, 22);
+            this.opacity100.Tag = 1;
+            this.opacity100.Text = "100%";
+            this.opacity100.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity90
+            // 
+            this.opacity90.Name = "opacity90";
+            this.opacity90.Size = new System.Drawing.Size(102, 22);
+            this.opacity90.Tag = 0.9D;
+            this.opacity90.Text = "90%";
+            this.opacity90.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity75
+            // 
+            this.opacity75.Name = "opacity75";
+            this.opacity75.Size = new System.Drawing.Size(102, 22);
+            this.opacity75.Tag = 0.75D;
+            this.opacity75.Text = "75%";
+            this.opacity75.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity50
+            // 
+            this.opacity50.Name = "opacity50";
+            this.opacity50.Size = new System.Drawing.Size(102, 22);
+            this.opacity50.Tag = 0.5D;
+            this.opacity50.Text = "50%";
+            this.opacity50.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity25
+            // 
+            this.opacity25.Name = "opacity25";
+            this.opacity25.Size = new System.Drawing.Size(102, 22);
+            this.opacity25.Tag = 0.25D;
+            this.opacity25.Text = "25%";
+            this.opacity25.Click += new System.EventHandler(this.Opacity_Clicked);
+            // 
+            // opacity10
+            // 
+            this.opacity10.Name = "opacity10";
+            this.opacity10.Size = new System.Drawing.Size(102, 22);
+            this.opacity10.Tag = 0.1D;
+            this.opacity10.Text = "10%";
+            this.opacity10.Click += new System.EventHandler(this.Opacity_Clicked);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -112,6 +173,9 @@ namespace PrayerReminder
             this.dhuhrLabel.Size = new System.Drawing.Size(43, 16);
             this.dhuhrLabel.TabIndex = 7;
             this.dhuhrLabel.Text = "Dhuhr";
+            this.dhuhrLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.dhuhrLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.dhuhrLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // asrLabel
             // 
@@ -123,6 +187,9 @@ namespace PrayerReminder
             this.asrLabel.Size = new System.Drawing.Size(28, 16);
             this.asrLabel.TabIndex = 8;
             this.asrLabel.Text = "Asr";
+            this.asrLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.asrLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.asrLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // maghribLabel
             // 
@@ -134,6 +201,9 @@ namespace PrayerReminder
             this.maghribLabel.Size = new System.Drawing.Size(60, 16);
             this.maghribLabel.TabIndex = 9;
             this.maghribLabel.Text = "Maghrib";
+            this.maghribLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.maghribLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.maghribLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // ishaLabel
             // 
@@ -145,6 +215,9 @@ namespace PrayerReminder
             this.ishaLabel.Size = new System.Drawing.Size(31, 16);
             this.ishaLabel.TabIndex = 10;
             this.ishaLabel.Text = "Isha";
+            this.ishaLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.ishaLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.ishaLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // dhuhrTime
             // 
@@ -155,6 +228,9 @@ namespace PrayerReminder
             this.dhuhrTime.Name = "dhuhrTime";
             this.dhuhrTime.Size = new System.Drawing.Size(0, 16);
             this.dhuhrTime.TabIndex = 12;
+            this.dhuhrTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.dhuhrTime.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.dhuhrTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // maghribTime
             // 
@@ -165,6 +241,9 @@ namespace PrayerReminder
             this.maghribTime.Name = "maghribTime";
             this.maghribTime.Size = new System.Drawing.Size(0, 16);
             this.maghribTime.TabIndex = 14;
+            this.maghribTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.maghribTime.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.maghribTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // asrTime
             // 
@@ -175,6 +254,9 @@ namespace PrayerReminder
             this.asrTime.Name = "asrTime";
             this.asrTime.Size = new System.Drawing.Size(0, 16);
             this.asrTime.TabIndex = 13;
+            this.asrTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.asrTime.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.asrTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // ishaTime
             // 
@@ -185,6 +267,9 @@ namespace PrayerReminder
             this.ishaTime.Name = "ishaTime";
             this.ishaTime.Size = new System.Drawing.Size(0, 16);
             this.ishaTime.TabIndex = 15;
+            this.ishaTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.ishaTime.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.ishaTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // dhuhrCheck
             // 
@@ -195,6 +280,9 @@ namespace PrayerReminder
             this.dhuhrCheck.Size = new System.Drawing.Size(15, 14);
             this.dhuhrCheck.TabIndex = 17;
             this.dhuhrCheck.UseVisualStyleBackColor = false;
+            this.dhuhrCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.dhuhrCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.dhuhrCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // asrCheck
             // 
@@ -205,6 +293,9 @@ namespace PrayerReminder
             this.asrCheck.Size = new System.Drawing.Size(15, 14);
             this.asrCheck.TabIndex = 18;
             this.asrCheck.UseVisualStyleBackColor = false;
+            this.asrCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.asrCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.asrCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // maghribCheck
             // 
@@ -215,6 +306,9 @@ namespace PrayerReminder
             this.maghribCheck.Size = new System.Drawing.Size(15, 14);
             this.maghribCheck.TabIndex = 19;
             this.maghribCheck.UseVisualStyleBackColor = false;
+            this.maghribCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.maghribCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.maghribCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // ishaCheck
             // 
@@ -225,6 +319,9 @@ namespace PrayerReminder
             this.ishaCheck.Size = new System.Drawing.Size(15, 14);
             this.ishaCheck.TabIndex = 20;
             this.ishaCheck.UseVisualStyleBackColor = false;
+            this.ishaCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.ishaCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.ishaCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // titleLabel
             // 
@@ -237,6 +334,9 @@ namespace PrayerReminder
             this.titleLabel.TabIndex = 21;
             this.titleLabel.Text = "Prayer Reminder";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.titleLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.titleLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // liveClock
             // 
@@ -248,6 +348,9 @@ namespace PrayerReminder
             this.liveClock.Size = new System.Drawing.Size(63, 16);
             this.liveClock.TabIndex = 22;
             this.liveClock.Text = "12:00 AM";
+            this.liveClock.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.liveClock.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.liveClock.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // timer1
             // 
@@ -270,6 +373,9 @@ namespace PrayerReminder
             this.fajrTime.Name = "fajrTime";
             this.fajrTime.Size = new System.Drawing.Size(0, 16);
             this.fajrTime.TabIndex = 11;
+            this.fajrTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.fajrTime.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.fajrTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // fajrLabel
             // 
@@ -282,6 +388,9 @@ namespace PrayerReminder
             this.fajrLabel.Size = new System.Drawing.Size(32, 16);
             this.fajrLabel.TabIndex = 6;
             this.fajrLabel.Text = "Fajr";
+            this.fajrLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.fajrLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.fajrLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // fajrCheck
             // 
@@ -292,6 +401,9 @@ namespace PrayerReminder
             this.fajrCheck.Size = new System.Drawing.Size(15, 14);
             this.fajrCheck.TabIndex = 16;
             this.fajrCheck.UseVisualStyleBackColor = false;
+            this.fajrCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.fajrCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.fajrCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // selectedPanel
             // 
@@ -306,67 +418,9 @@ namespace PrayerReminder
             this.selectedPanel.Size = new System.Drawing.Size(175, 30);
             this.selectedPanel.TabIndex = 27;
             this.selectedPanel.Visible = false;
-            // 
-            // opacityToolStripMenuItem
-            // 
-            this.opacityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opacity100,
-            this.opacity90,
-            this.opacity75,
-            this.opacity50,
-            this.opacity25,
-            this.opacity10});
-            this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
-            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.opacityToolStripMenuItem.Text = "Opacity";
-            // 
-            // opacity100
-            // 
-            this.opacity100.Name = "opacity100";
-            this.opacity100.Size = new System.Drawing.Size(180, 22);
-            this.opacity100.Text = "100%";
-            this.opacity100.Tag = 1;
-            this.opacity100.Click += new System.EventHandler(this.Opacity_Clicked);
-            // 
-            // opacity10
-            // 
-            this.opacity10.Name = "opacity10";
-            this.opacity10.Size = new System.Drawing.Size(180, 22);
-            this.opacity10.Text = "10%";
-            this.opacity10.Tag = .1;
-            this.opacity10.Click += new System.EventHandler(this.Opacity_Clicked);
-            // 
-            // opacity50
-            // 
-            this.opacity50.Name = "opacity50";
-            this.opacity50.Size = new System.Drawing.Size(180, 22);
-            this.opacity50.Text = "50%";
-            this.opacity50.Tag = .5;
-            this.opacity50.Click += new System.EventHandler(this.Opacity_Clicked);
-            // 
-            // opacity25
-            // 
-            this.opacity25.Name = "opacity25";
-            this.opacity25.Size = new System.Drawing.Size(180, 22);
-            this.opacity25.Text = "25%";
-            this.opacity25.Tag = .25;
-            this.opacity25.Click += new System.EventHandler(this.Opacity_Clicked);
-            // 
-            // opacity90
-            // 
-            this.opacity90.Name = "opacity90";
-            this.opacity90.Size = new System.Drawing.Size(180, 22);
-            this.opacity90.Text = "90%";
-            this.opacity90.Tag = .9;
-            this.opacity90.Click += new System.EventHandler(this.Opacity_Clicked);
-            // 
-            // opacity75
-            // 
-            this.opacity75.Name = "opacity75";
-            this.opacity75.Size = new System.Drawing.Size(180, 22);
-            this.opacity75.Text = "75%";
-            this.opacity75.Tag = .75;
-            this.opacity75.Click += new System.EventHandler(this.Opacity_Clicked);
+            this.selectedPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
+            this.selectedPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.selectedPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
             // Form1
             // 
@@ -399,6 +453,7 @@ namespace PrayerReminder
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
