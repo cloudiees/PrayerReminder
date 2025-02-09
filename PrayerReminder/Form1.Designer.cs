@@ -32,7 +32,6 @@ namespace PrayerReminder
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lockPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +65,6 @@ namespace PrayerReminder
             this.fajrTime = new System.Windows.Forms.Label();
             this.fajrLabel = new System.Windows.Forms.Label();
             this.fajrCheck = new System.Windows.Forms.CheckBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.selectedPanel = new PrayerReminder.FancyPanel();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -443,15 +441,6 @@ namespace PrayerReminder
             this.fajrCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
             this.fajrCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "checkmarkdisabled.png");
-            this.imageList1.Images.SetKeyName(1, "checkmarkenabled.png");
-            this.imageList1.Images.SetKeyName(2, "checkmarkhover.png");
-            this.imageList1.Images.SetKeyName(3, "checkmarkchecked.png");
-            // 
             // selectedPanel
             // 
             this.selectedPanel.BackColor = System.Drawing.Color.White;
@@ -543,7 +532,6 @@ namespace PrayerReminder
         private ToolStripMenuItem schoolToolStripMenuItem;
         private ToolStripMenuItem shafiToolStripMenuItem;
         private ToolStripMenuItem hanafiToolStripMenuItem;
-        private ImageList imageList1;
     }
 }
 
