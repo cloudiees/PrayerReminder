@@ -32,6 +32,7 @@ namespace PrayerReminder
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lockPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,9 @@ namespace PrayerReminder
             this.opacity50 = new System.Windows.Forms.ToolStripMenuItem();
             this.opacity25 = new System.Windows.Forms.ToolStripMenuItem();
             this.opacity10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.schoolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shafiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hanafiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dhuhrLabel = new System.Windows.Forms.Label();
             this.asrLabel = new System.Windows.Forms.Label();
@@ -62,10 +66,8 @@ namespace PrayerReminder
             this.fajrTime = new System.Windows.Forms.Label();
             this.fajrLabel = new System.Windows.Forms.Label();
             this.fajrCheck = new System.Windows.Forms.CheckBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.selectedPanel = new PrayerReminder.FancyPanel();
-            this.schoolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shafiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hanafiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,14 +81,14 @@ namespace PrayerReminder
             this.schoolToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
             // 
             // lockPositionToolStripMenuItem
             // 
             this.lockPositionToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.lockPositionToolStripMenuItem.CheckOnClick = true;
             this.lockPositionToolStripMenuItem.Name = "lockPositionToolStripMenuItem";
-            this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lockPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.lockPositionToolStripMenuItem.Text = "Lock Position";
             this.lockPositionToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.lockPositionToolStripMenuItem_CheckStateChanged);
             // 
@@ -95,7 +97,7 @@ namespace PrayerReminder
             this.alwaysOnTopToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.alwaysOnTopToolStripMenuItem.CheckOnClick = true;
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
-            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.alwaysOnTopToolStripMenuItem.Text = "Always On Top";
             this.alwaysOnTopToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_CheckStateChanged);
             // 
@@ -109,7 +111,7 @@ namespace PrayerReminder
             this.opacity25,
             this.opacity10});
             this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
-            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.opacityToolStripMenuItem.Text = "Opacity";
             // 
             // opacity100
@@ -160,11 +162,36 @@ namespace PrayerReminder
             this.opacity10.Text = "10%";
             this.opacity10.Click += new System.EventHandler(this.Opacity_Clicked);
             // 
+            // schoolToolStripMenuItem
+            // 
+            this.schoolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.shafiToolStripMenuItem,
+            this.hanafiToolStripMenuItem});
+            this.schoolToolStripMenuItem.Name = "schoolToolStripMenuItem";
+            this.schoolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.schoolToolStripMenuItem.Text = "School";
+            // 
+            // shafiToolStripMenuItem
+            // 
+            this.shafiToolStripMenuItem.Name = "shafiToolStripMenuItem";
+            this.shafiToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.shafiToolStripMenuItem.Tag = 0;
+            this.shafiToolStripMenuItem.Text = "Shafi";
+            this.shafiToolStripMenuItem.Click += new System.EventHandler(this.School_Clicked);
+            // 
+            // hanafiToolStripMenuItem
+            // 
+            this.hanafiToolStripMenuItem.Name = "hanafiToolStripMenuItem";
+            this.hanafiToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.hanafiToolStripMenuItem.Tag = 1;
+            this.hanafiToolStripMenuItem.Text = "Hanafi";
+            this.hanafiToolStripMenuItem.Click += new System.EventHandler(this.School_Clicked);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -285,6 +312,7 @@ namespace PrayerReminder
             this.dhuhrCheck.Size = new System.Drawing.Size(15, 14);
             this.dhuhrCheck.TabIndex = 17;
             this.dhuhrCheck.UseVisualStyleBackColor = false;
+            this.dhuhrCheck.CheckedChanged += new System.EventHandler(this.prayerCheck_CheckedChanged);
             this.dhuhrCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
             this.dhuhrCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
             this.dhuhrCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
@@ -298,6 +326,7 @@ namespace PrayerReminder
             this.asrCheck.Size = new System.Drawing.Size(15, 14);
             this.asrCheck.TabIndex = 18;
             this.asrCheck.UseVisualStyleBackColor = false;
+            this.asrCheck.CheckedChanged += new System.EventHandler(this.prayerCheck_CheckedChanged);
             this.asrCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
             this.asrCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
             this.asrCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
@@ -311,6 +340,7 @@ namespace PrayerReminder
             this.maghribCheck.Size = new System.Drawing.Size(15, 14);
             this.maghribCheck.TabIndex = 19;
             this.maghribCheck.UseVisualStyleBackColor = false;
+            this.maghribCheck.CheckedChanged += new System.EventHandler(this.prayerCheck_CheckedChanged);
             this.maghribCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
             this.maghribCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
             this.maghribCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
@@ -324,6 +354,7 @@ namespace PrayerReminder
             this.ishaCheck.Size = new System.Drawing.Size(15, 14);
             this.ishaCheck.TabIndex = 20;
             this.ishaCheck.UseVisualStyleBackColor = false;
+            this.ishaCheck.CheckedChanged += new System.EventHandler(this.prayerCheck_CheckedChanged);
             this.ishaCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
             this.ishaCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
             this.ishaCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
@@ -405,10 +436,21 @@ namespace PrayerReminder
             this.fajrCheck.Name = "fajrCheck";
             this.fajrCheck.Size = new System.Drawing.Size(15, 14);
             this.fajrCheck.TabIndex = 16;
+            this.fajrCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.fajrCheck.UseVisualStyleBackColor = false;
+            this.fajrCheck.CheckedChanged += new System.EventHandler(this.prayerCheck_CheckedChanged);
             this.fajrCheck.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
             this.fajrCheck.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
             this.fajrCheck.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "checkmarkdisabled.png");
+            this.imageList1.Images.SetKeyName(1, "checkmarkenabled.png");
+            this.imageList1.Images.SetKeyName(2, "checkmarkhover.png");
+            this.imageList1.Images.SetKeyName(3, "checkmarkchecked.png");
             // 
             // selectedPanel
             // 
@@ -426,31 +468,6 @@ namespace PrayerReminder
             this.selectedPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_Down);
             this.selectedPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Move);
             this.selectedPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouse_Up);
-            // 
-            // schoolToolStripMenuItem
-            // 
-            this.schoolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.shafiToolStripMenuItem,
-            this.hanafiToolStripMenuItem});
-            this.schoolToolStripMenuItem.Name = "schoolToolStripMenuItem";
-            this.schoolToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.schoolToolStripMenuItem.Text = "School";
-            // 
-            // shafiToolStripMenuItem
-            // 
-            this.shafiToolStripMenuItem.Name = "shafiToolStripMenuItem";
-            this.shafiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.shafiToolStripMenuItem.Text = "Shafi";
-            this.shafiToolStripMenuItem.Tag = 0;
-            this.shafiToolStripMenuItem.Click += new System.EventHandler(this.School_Clicked);
-            // 
-            // hanafiToolStripMenuItem
-            // 
-            this.hanafiToolStripMenuItem.Name = "hanafiToolStripMenuItem";
-            this.hanafiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.hanafiToolStripMenuItem.Text = "Hanafi";
-            this.hanafiToolStripMenuItem.Tag = 1;
-            this.hanafiToolStripMenuItem.Click += new System.EventHandler(this.School_Clicked);
             // 
             // Form1
             // 
@@ -526,6 +543,7 @@ namespace PrayerReminder
         private ToolStripMenuItem schoolToolStripMenuItem;
         private ToolStripMenuItem shafiToolStripMenuItem;
         private ToolStripMenuItem hanafiToolStripMenuItem;
+        private ImageList imageList1;
     }
 }
 

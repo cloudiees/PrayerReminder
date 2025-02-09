@@ -20,7 +20,6 @@ namespace PrayerReminder
         /*
         TODO:
         - Setup reminder and maybe some things in settings for the reminder
-        - Allow user to input location (or automatically get it) and calculation method (or school) for API request
         - Do the actual reminder part
         - Add an initial setup phase thing
         - Make it look less ugly
@@ -32,7 +31,8 @@ namespace PrayerReminder
         private bool mouseDown;
         private Pair<string, DateTime>[] prayers = new Pair<string, DateTime>[6];
         private int currPrayer = -2;
-        private PrayerData<Control, Control, Control>[] prayerObjects = new PrayerData<Control, Control, Control>[5];
+        private int prevPrayer;
+        private PrayerData<Control, Control, Control>[] prayerObjects = new PrayerData<Control, Control, Control>[6];
 
         // Pretty rectangle (idk I stole this from stack overflow)
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -55,13 +55,14 @@ namespace PrayerReminder
             ApiHelper.InitializeClient();
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             prayerObjects[0] = new PrayerData<Control, Control, Control>(this.Controls["fajrCheck"], this.Controls["fajrLabel"], this.Controls["fajrTime"]);
-            prayerObjects[1] = new PrayerData<Control, Control, Control>(this.Controls["dhuhrCheck"], this.Controls["dhuhrLabel"], this.Controls["dhuhrTime"]);
-            prayerObjects[2] = new PrayerData<Control, Control, Control>(this.Controls["asrCheck"], this.Controls["asrLabel"], this.Controls["asrTime"]);
-            prayerObjects[3] = new PrayerData<Control, Control, Control>(this.Controls["maghribCheck"], this.Controls["maghribLabel"], this.Controls["maghribTime"]);
-            prayerObjects[4] = new PrayerData<Control, Control, Control>(this.Controls["ishaCheck"], this.Controls["ishaLabel"], this.Controls["ishaTime"]);
+            prayerObjects[2] = new PrayerData<Control, Control, Control>(this.Controls["dhuhrCheck"], this.Controls["dhuhrLabel"], this.Controls["dhuhrTime"]);
+            prayerObjects[3] = new PrayerData<Control, Control, Control>(this.Controls["asrCheck"], this.Controls["asrLabel"], this.Controls["asrTime"]);
+            prayerObjects[4] = new PrayerData<Control, Control, Control>(this.Controls["maghribCheck"], this.Controls["maghribLabel"], this.Controls["maghribTime"]);
+            prayerObjects[5] = new PrayerData<Control, Control, Control>(this.Controls["ishaCheck"], this.Controls["ishaLabel"], this.Controls["ishaTime"]);
             loadTimings();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
+        // Loads in all user settings
         private void Form1_Load(object sender, EventArgs e)
         {
             opacityDict.Add(1.0, opacity100);
@@ -189,19 +190,17 @@ namespace PrayerReminder
         // Deselect current prayer and selects the new one
         public void deselectAndSelectPrayer()
         {
-            int x = currPrayer - 1;
-            if (x < 0) x = 5;
-            if (currPrayer != 1)
+            if (prevPrayer != 1 && prevPrayer != -2 && prevPrayer != -1)
             {
-                if (x > 0) x -= 1;
-                deselectPrayer(prayerObjects[x].checkBox, prayerObjects[x].label, prayerObjects[x].timing);
+                deselectPrayer(prayerObjects[prevPrayer].checkBox, prayerObjects[prevPrayer].label, prayerObjects[prevPrayer].timing);
             }
-            x = currPrayer;
-            if (!(currPrayer < 0) && currPrayer != 1)
+            if (currPrayer != 1 && currPrayer != -1 && currPrayer != -2)
             {
-                if (x > 0) x -= 1;
-                Point newLoc = new Point(10, (45 * x) + 55);
-                selectPrayer(prayerObjects[x].checkBox, prayerObjects[x].label, prayerObjects[x].timing, newLoc);
+                int locMulti;
+                if (currPrayer > 1) locMulti = currPrayer - 1;
+                else locMulti = currPrayer;
+                Point newLoc = new Point(10, (45 * locMulti) + 55);
+                selectPrayer(prayerObjects[currPrayer].checkBox, prayerObjects[currPrayer].label, prayerObjects[currPrayer].timing, newLoc);
             }
             if (currPrayer == -1)
             {
@@ -242,6 +241,7 @@ namespace PrayerReminder
             }
             if (currPrayer != lastPrayer)
             {
+                prevPrayer = lastPrayer;
                 deselectAndSelectPrayer();
             }
         }
@@ -265,6 +265,7 @@ namespace PrayerReminder
             Settings1.Default.opacityS = currOpacity;
             Settings1.Default.Save();
         }
+        // Handler for changing school
         private void School_Clicked(object sender, EventArgs e)
         {
             if (Settings1.Default.schoolS == 0)
@@ -279,6 +280,12 @@ namespace PrayerReminder
             (sender as ToolStripMenuItem).Checked = true;
             Settings1.Default.Save();
             loadTimings();
+        }
+
+        private void prayerCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            (sender as CheckBox).Enabled = false;
+            (sender as CheckBox).Checked = true;
         }
     }
 }
